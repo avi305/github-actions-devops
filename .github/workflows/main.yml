@@ -1,6 +1,9 @@
-name: Build Job
+name: Vprofile CI/CD Pipeline
 on:
-    push:
+    # push:
+    #     branches:
+    #         - main
+    pull_request:
         branches:
             - main
 
@@ -10,6 +13,8 @@ jobs:
         steps:
             - name: Code checkout
               uses: actions/checkout@v6
+              with:
+                  fatch-depth: 0
 
             - name: Maven Build
               run: mvn install
@@ -19,7 +24,9 @@ jobs:
         needs: Build
         steps:
             - name: Code checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
+              with:
+                  fatch-depth: 0
 
             - name: Run tests on main branch
               run: mvn test
