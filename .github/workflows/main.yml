@@ -4,11 +4,11 @@ on:
         branches:
             - main
 
-    # pull_request:
-    #     branches:
-    #         - main
+    pull_request:
+        branches:
+            - main
 
-    # workflow_dispatch:
+    workflow_dispatch:
 
     # schedule:
     #     - cron: "10 14 * * 1-5" # Runs at 14:10 UTC (9:10 AM EST) every weekday
@@ -108,7 +108,7 @@ jobs:
 
             - name: Login to Amazon ECR
               id: login-ecr
-              uses: aws-actions/ecr-login-action@v3
+              uses: aws-actions/amazon-ecr-login@v3
 
             - name: Build, Tag and Push Docker Image to Amazon ECR
               id: build-image
