@@ -73,13 +73,13 @@ jobs:
               with:
                   scan-type: "fs"
                   scan-ref: "."
-                  format: "json"
+                  format: "table"
                   exit-code: "0"
                   vuln-type: "os,library"
-                  output: "trivy-results.json"
+                  output: "trivy-results.table"
 
             - name: Upload Trivy Scan Results as an artifact
               uses: actions/upload-artifact@v7
               with:
                   name: trivy-scan-results
-                  path: trivy-results.json
+                  path: trivy-results.table
